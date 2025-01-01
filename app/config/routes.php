@@ -1,6 +1,9 @@
 <?php
-
-$router->add('home', '/', 'PostController@index');
-$router->add('post.show', '/post/{slug}', 'PostController@show');
-$router->add('api.post', '/api/post/{slug}', 'ApiController@getPost');
-$router->add('admin.dashboard', '/admin/dashboard', 'AdminController@dashboard');
+$router->get('/products', 'ProductController@index');
+$router->get('/product/{id}', 'ProductController@show');
+$router->get('/', 'HomeController@index');
+$router->get('/post/{slug}', 'PostController@show');
+$router->get('/login', 'AuthController@loginForm');
+$router->get('/logout', 'AuthController@logout');
+$router->post('/login', 'AuthController@login');
+$router->post('/upload', 'UploadController@upload', ['AuthMiddleware']);

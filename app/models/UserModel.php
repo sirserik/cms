@@ -4,19 +4,21 @@ namespace App\Models;
 
 use PDO;
 
-class UserModel
+class UserModel extends BaseModel
 {
-    private $pdo;
+    protected $table = 'users';
 
-    public function __construct(PDO $pdo)
+    /**
+     * Находит пользователя по email.
+     *
+     * @param string $email - Email пользователя.
+     * @return array|null
+     */
+    public function findByEmail(string $email): ?array
     {
-        $this->pdo = $pdo;
-    }
-
-    public function findByUsername($username)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->execute([':username' => $username]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $query = "SELECT * FROM {$this->table} WHERE email = :email";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([':email' => $email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 }

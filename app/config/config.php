@@ -9,4 +9,5 @@ return [
     ],
     'languages' => ['en', 'ru'],
     'default_language' => 'en',
+    'mode' => 'production', // Режим работы: production, maintenance, development
 ];
