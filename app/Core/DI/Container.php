@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Core\DI;
 
 class Container
