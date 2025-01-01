@@ -1,7 +1,10 @@
 {
   "autoload": {
     "psr-4": {
-      "app\\": "app"
+      "App\\": "app"
     }
+  },
+  "require": {
+    "ext-pdo": "*"
   }
 }
